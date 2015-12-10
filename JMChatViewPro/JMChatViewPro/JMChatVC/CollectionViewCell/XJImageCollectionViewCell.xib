@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="XJImageCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="173" height="104"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="173" height="104"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NEo-gl-OwS">
+                        <rect key="frame" x="0.0" y="0.0" width="173" height="104"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <constraints>
+                <constraint firstItem="NEo-gl-OwS" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="36i-ZM-FnE"/>
+                <constraint firstAttribute="bottom" secondItem="NEo-gl-OwS" secondAttribute="bottom" id="KtT-NV-qVR"/>
+                <constraint firstAttribute="trailing" secondItem="NEo-gl-OwS" secondAttribute="trailing" id="bLZ-hn-b9P"/>
+                <constraint firstItem="NEo-gl-OwS" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qf1-HM-PQh"/>
+            </constraints>
+            <connections>
+                <outlet property="chatImageView" destination="NEo-gl-OwS" id="3bO-r5-YmS"/>
+            </connections>
+            <point key="canvasLocation" x="113.5" y="299"/>
+        </collectionViewCell>
+    </objects>
+</document>

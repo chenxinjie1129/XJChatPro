@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="JMReceivedCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="98" height="62"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="98" height="62"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lbY-yt-pdl">
+                        <rect key="frame" x="0.0" y="0.0" width="98" height="62"/>
+                        <animations/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7u-kr-dby">
+                        <rect key="frame" x="20" y="10" width="70" height="44"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <animations/>
+            <constraints>
+                <constraint firstItem="F7u-kr-dby" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="020-1N-62x"/>
+                <constraint firstItem="lbY-yt-pdl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3r5-Z0-GXm"/>
+                <constraint firstAttribute="trailing" secondItem="lbY-yt-pdl" secondAttribute="trailing" id="4z8-PW-bvM"/>
+                <constraint firstAttribute="bottom" secondItem="F7u-kr-dby" secondAttribute="bottom" constant="8" id="7Me-xb-j4T"/>
+                <constraint firstItem="F7u-kr-dby" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="ZTN-NB-O4t"/>
+                <constraint firstItem="lbY-yt-pdl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aCW-DJ-yhv"/>
+                <constraint firstAttribute="bottom" secondItem="lbY-yt-pdl" secondAttribute="bottom" id="rxf-gv-tir"/>
+                <constraint firstAttribute="trailing" secondItem="F7u-kr-dby" secondAttribute="trailing" constant="8" id="xBm-Wi-t7e"/>
+            </constraints>
+            <size key="customSize" width="98" height="62"/>
+            <connections>
+                <outlet property="chatBgImage" destination="lbY-yt-pdl" id="t8v-SM-aZ2"/>
+                <outlet property="chatLabel" destination="F7u-kr-dby" id="P8a-zw-gtn"/>
+            </connections>
+            <point key="canvasLocation" x="239" y="217"/>
+        </collectionViewCell>
+    </objects>
+</document>
