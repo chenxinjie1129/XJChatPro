@@ -7,6 +7,7 @@
 //
 
 #import "DemoUserXibViewController.h"
+#import "XJCustomLayout.h"
 
 @interface DemoUserXibViewController ()
 
@@ -31,7 +32,7 @@
     
     model.contentType = JMCONTENT;
     
-    model.strUserImage = @"da";
+    model.strUserImage = @"test";
     
     model.strName = @"大哥";
     
@@ -49,7 +50,6 @@
 
 -(void)addBtnAction{
 
-    NSLog(@"大哥，看我");
     
     JMChatModel *model = [[JMChatModel alloc] init];
     
@@ -59,7 +59,7 @@
     
     model.contentType = JMCONTENT;
     
-    model.strUserImage = @"da";
+    model.strUserImage = @"test";
     
     model.strName = @"大哥";
     
@@ -67,6 +67,7 @@
     
     model.strContent =@"add normal action";
     
+    ((XJCustomLayout *)self.chatCollectionView.collectionViewLayout).isInset = YES;
     
     [self addMsgNormalAction:model];
     

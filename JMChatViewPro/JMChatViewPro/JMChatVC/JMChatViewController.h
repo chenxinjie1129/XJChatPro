@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "JMCellFactory.h"
-
+#import "XJCustomLayout.h"
 /**
  *  必读文件！JMChatModel.!
  */
@@ -16,6 +16,8 @@
 @interface JMChatViewController : UIViewController
 
 @property (nonatomic,strong)  JMCellFactory *collectionFactory;
+
+@property (nonatomic, strong)  XJCustomLayout *layout;
 
 @property (weak, nonatomic) IBOutlet UITextField *sendTextField;
 @property (weak, nonatomic) IBOutlet UIButton *addSearchBtn;

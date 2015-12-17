@@ -7,6 +7,7 @@
 //
 
 #import "XJCustomLayout.h"
+#define screen_size_width [[UIScreen mainScreen] bounds].size.width
 
 @interface XJCustomLayout ()
 {
@@ -23,6 +24,8 @@
      每一行最高度
      */
     CGFloat maxHeightOfRow;
+    
+    NSMutableArray *_sectionAttributeArray;
 }
 
 @end
@@ -33,10 +36,11 @@
 {
     if (self = [super init])
     {
-        _sectionInsets = UIEdgeInsetsZero;
+        self.headerReferenceSize = CGSizeMake(screen_size_width, 40);
+        _sectionInsets = UIEdgeInsetsMake(40, 0, 0, 0);
         _columnCount = 3;
         _columnSpace = 10;
-        _interSpace = 10;
+        _interSpace = 5;
     }
     
     return self;
@@ -85,19 +89,19 @@
     
     //查找最小列
     [_columnHeightArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop)
-    {
-        if ([obj integerValue] < shortestHeight)
-        {
-            //记录最小值
-            shortestHeight = [obj integerValue];
-            
-            //停止循环
-            //*stop = YES;
-            
-            //记录最小值的下标
-            index = idx;
-        }
-    }];
+     {
+         if ([obj integerValue] < shortestHeight)
+         {
+             //记录最小值
+             shortestHeight = [obj integerValue];
+             
+             //停止循环
+             //*stop = YES;
+             
+             //记录最小值的下标
+             index = idx;
+         }
+     }];
     
     return index;
 }
@@ -107,35 +111,123 @@
 {
     [super prepareLayout];
     
+    NSInteger m = 0;
+    
+    
     _delegate = (id<CustomLayoutDelegate>)self.collectionView.delegate;
     
-    _columnHeightArray = [NSMutableArray array];
-    _itemAttributeArray = [NSMutableArray array];
     
-    
-    //布局item
-    for (int i = 0; i < _columnCount; i++)
-    {
-        //每一列高度默认是0
-        [_columnHeightArray addObject:@(0)];
+    if (!self.isInset) {
+        _columnHeightArray = [NSMutableArray array];
+        _itemAttributeArray = [NSMutableArray array];
         
+        _sectionAttributeArray = [NSMutableArray array];
+        
+        maxHeightOfRow = 0;
+        
+        //布局item
+        for (int i = 0; i < _columnCount; i++)
+        {
+            //每一列高度默认是0
+            [_columnHeightArray addObject:@(0)];
+            
+        }
+        //布局item
+        
+        //设置每个item的坐标
+        
+        for (int k = 0; k < [self.collectionView numberOfSections]; k ++) {
+            
+            NSInteger totalItemW = 0;
+            
+            UIEdgeInsets itemEdgeInsets = [_delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:k];
+            
+            CGSize sectionSize = [_delegate collectionView:self.collectionView layout:self referenceSizeForHeaderInSection:k];
+            
+            UICollectionViewLayoutAttributes *sectionAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:k]];
+            
+            for (int i = 0; i < [self.collectionView numberOfItemsInSection:k]; i++)
+            {
+                
+                
+                //item的高度
+                NSInteger itemHeight = 0;
+                //item的x
+                NSInteger xOffset = 0;
+                //item的y
+                NSInteger yOffset = 0;
+                
+                /*
+                 取数据
+                 */
+                CGSize itemSize = [_delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:k]];
+                
+                
+                self.sectionInsets = itemEdgeInsets;
+                
+                //每个item的宽度
+                
+                NSInteger itemWidth = itemSize.width;
+                
+                //计算item的高度
+                itemHeight = itemSize.height;
+                
+                xOffset =   itemEdgeInsets.left + totalItemW + 5;
+                
+                //x坐标
+                totalItemW = totalItemW + itemWidth;
+                
+                
+                //y坐标
+                yOffset =  maxHeightOfRow +_interSpace + sectionSize.height;
+                
+                sectionAttributes.frame = CGRectMake(0, yOffset - sectionSize.height, screen_size_width, 20);
+                
+                //保存的是item的属性
+                UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:i inSection:k]];
+                //设置坐标
+                attribute.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
+                
+                
+                //修改高度
+                _columnHeightArray[i%_columnCount] = @(CGRectGetMaxY(attribute.frame));
+                
+                //保存item信息
+                [_itemAttributeArray addObject:attribute];
+                
+                //获取每一行最大高度
+                if (i%_columnCount == (_columnCount-1)) {
+                    
+                    maxHeightOfRow = [_columnHeightArray[[self longestColomnHeight]] floatValue];
+                    
+                    
+                }
+                NSLog(@"%zi",m++);
+                if (m == ([self.collectionView numberOfSections]*3)) {
+                    NSLog(@"******%f",maxHeightOfRow);
+                }
+                
+            }
+            if (sectionAttributes != nil) {
+                [_sectionAttributeArray addObject:sectionAttributes];
+            }
+            
+        }
     }
 
-    //布局item
-    
-    /*
-     1.[self.collectionView numberOfItemsInSection:组索引]
-     根据组索引返回当前组里面的item的个数
-     2.[self.collectionView numberOfSections];
-     获取当前collectionView里面有多少组
-     */
-    
-    //设置每个item的坐标
-    for (int k = 0; k < [self.collectionView numberOfSections]; k ++) {
-        
+else{
+
+        NSLog(@"-%f %zi ",maxHeightOfRow,[self.collectionView numberOfSections]);
+        NSInteger sectionNum = [self.collectionView numberOfSections];
         NSInteger totalItemW = 0;
         
-        for (int i = 0; i < [self.collectionView numberOfItemsInSection:k]; i++)
+        UIEdgeInsets itemEdgeInsets = [_delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:sectionNum-1];
+        
+        CGSize sectionSize = [_delegate collectionView:self.collectionView layout:self referenceSizeForHeaderInSection:sectionNum-1];
+        
+        UICollectionViewLayoutAttributes *sectionAttributes = [self layoutAttributesForSupplementaryViewOfKind:UICollectionElementKindSectionHeader atIndexPath:[NSIndexPath indexPathForItem:0 inSection:sectionNum-1]];
+        
+        for (int i = 0; i < [self.collectionView numberOfItemsInSection:sectionNum-1]; i++)
         {
             
             
@@ -146,44 +238,37 @@
             //item的y
             NSInteger yOffset = 0;
             
-            
-            
             /*
              取数据
              */
-            CGSize itemSize = [_delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:k]];
+            CGSize itemSize = [_delegate collectionView:self.collectionView layout:self sizeForItemAtIndexPath:[NSIndexPath indexPathForItem:i inSection:sectionNum-1]];
             
-            UIEdgeInsets itemEdgeInsets = [_delegate collectionView:self.collectionView layout:self insetForSectionAtIndex:k];
+            
             self.sectionInsets = itemEdgeInsets;
             
             //每个item的宽度
             
             NSInteger itemWidth = itemSize.width;
             
-            /*
-             原始W      现W
-             ------ ==  ----  ===>  X = 原始H * 现W / 原始W
-             原始H       X
-             */
-            
             //计算item的高度
-//            itemHeight = itemSize.height * itemWidth / itemSize.width;
             itemHeight = itemSize.height;
             
-             xOffset =  itemEdgeInsets.left + totalItemW + 5;
+            xOffset =   itemEdgeInsets.left + totalItemW + 5;
             
             //x坐标
             totalItemW = totalItemW + itemWidth;
-           
-           
+            
             
             //y坐标
-            yOffset =  maxHeightOfRow +_interSpace;
+            yOffset =  maxHeightOfRow +_interSpace + sectionSize.height;
+            
+            sectionAttributes.frame = CGRectMake(0, yOffset - sectionSize.height, screen_size_width, 20);
             
             //保存的是item的属性
-            UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:i inSection:k]];
+            UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:[NSIndexPath indexPathForItem:i inSection:sectionNum-1]];
             //设置坐标
             attribute.frame = CGRectMake(xOffset, yOffset, itemWidth, itemHeight);
+            
             
             //修改高度
             _columnHeightArray[i%_columnCount] = @(CGRectGetMaxY(attribute.frame));
@@ -198,30 +283,46 @@
                 
                 
             }
-            
+            NSLog(@"%zi",m++);
+            if (m == 3) {
+                NSLog(@"+%f",maxHeightOfRow);
+            }
             
         }
+        if (sectionAttributes != nil) {
+            [_sectionAttributeArray addObject:sectionAttributes];
+        }
 
-        
-        
     }
     
     
     
-    
 }
 
-//返回指定区域的item的属性
+
+
+//返回指定区域的collectionView 上的子视图的属性
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
-    return _itemAttributeArray;
+    NSMutableArray *layoutAttributes = [NSMutableArray array];
+    
+    [layoutAttributes  addObjectsFromArray:_itemAttributeArray];
+    
+    [layoutAttributes addObjectsFromArray:_sectionAttributeArray];
+    
+    
+    return layoutAttributes;
 }
 
 //返回指定item的属性
-- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return _itemAttributeArray[indexPath.item];
-}
+//- (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    if (self.isInset) {
+//        return _itemAttributeArray[indexPath.row];
+//    };
+//    return nil;
+//    
+//}
 
 //返回collectionViewContentSize
 - (CGSize)collectionViewContentSize
@@ -232,4 +333,6 @@
     return CGSizeMake(self.collectionView.frame.size.width, [_columnHeightArray[longest] floatValue] + _sectionInsets.bottom);
 }
 
+
 @end
+

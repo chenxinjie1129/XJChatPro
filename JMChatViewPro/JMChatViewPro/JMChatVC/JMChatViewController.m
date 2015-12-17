@@ -10,7 +10,7 @@
 #import "JMChatModel.h"
 #import "JMChatDefine.h"
 #import "JMFunction.h"
-#import "XJCustomLayout.h"
+
 
 @interface JMChatViewController ()<UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout,UITextFieldDelegate>{
 
@@ -40,19 +40,15 @@
     
     self.chatCollectionView.dataSource = self;
     
-    XJCustomLayout *layout = [[XJCustomLayout alloc] init];
-//    layout.sectionInsets = UIEdgeInsetsMake(10, 10, 10, 10);
-    //layout.columnSpace = 20;
-    layout.columnCount = 3;
-    
-    self.chatCollectionView.collectionViewLayout = layout;
-    
-    
-   // [self registerCollectionViewCell];
-
     self.collectionFactory = [[JMCellFactory alloc] init];
     
     [self.collectionFactory registerCollectionViewCell:self.chatCollectionView];
+    
+    XJCustomLayout *layout = [[XJCustomLayout alloc] init];
+    
+    self.layout = layout;
+    
+    self.chatCollectionView.collectionViewLayout = self.layout;
     
     self.hasUserImage = YES;
     
@@ -69,7 +65,6 @@
 
 -(void)addBtnAction{
     
-    NSLog(@"大哥，看我");
     
 }
 
@@ -151,7 +146,7 @@
 
 -(JMChatModel *)sendMsg:(UITextField *)textField{
     
-    /*
+    
     JMChatModel *model = [[JMChatModel alloc] init];
     
     
@@ -161,9 +156,8 @@
     
     model.strContent =textField.text;
     
-    return model;*/
+    return model;
     
-    return nil;
     
 
 }
@@ -175,7 +169,7 @@
     [self.chatCollectionView insertSections:[NSIndexSet indexSetWithIndex:self.dataArray.count -1]];
     
     
-    [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+    [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
 
 }
 
@@ -203,7 +197,7 @@
 
 -(void)testData{
 
-    for (int i = 0; i<20; i++) {
+    for (int i = 0; i<2; i++) {
         
         JMChatModel *model = [[JMChatModel alloc] init];
 
@@ -214,6 +208,8 @@
         model.strName =@"陈大哥";
         
         model.strUserImage = @"test";
+        
+        model.strDate = @"日期未知";
         
         if (value == 0) {
     
@@ -227,8 +223,6 @@
             
         
             model.contentType = JMIMAGE;
-            
-            UIImage *image = [UIImage imageNamed:[testImageArray objectAtIndex:testImageIndex]];
 
             model.cellSize =  CGSizeMake(150 , 200);
             
@@ -319,7 +313,7 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
 
-    return CGSizeMake(screen_size_width, 40);
+    return CGSizeMake(screen_size_width, 30);
 
 
 }
@@ -410,7 +404,6 @@
 -(void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSLog(@"hello world");
 }
 
 

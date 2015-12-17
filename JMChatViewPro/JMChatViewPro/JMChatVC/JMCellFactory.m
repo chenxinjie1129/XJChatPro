@@ -139,6 +139,8 @@
     
     contentCell.chateType = model.chatType;
     
+    NSLog(@"%f",contentCell.frame.origin.y);
+    
     NSValue *value = [NSValue valueWithCGSize:model.cellSize];
     
     [contentCell.chatBgImage setMyImage:[UIImage imageNamed:@"chatBgImage"] withNSValue:value];
@@ -156,6 +158,8 @@
 -(UICollectionViewCell *)setupContentReceivedForCell:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath WithModel:(JMChatModel *)model{
 
     JMReceivedCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMReceivedContent forIndexPath:indexPath];
+    
+    NSLog(@"%f",contentCell.frame.origin.y);
     
     contentCell.chateType = model.chatType;
     
@@ -193,11 +197,8 @@
     
     NSValue *value = [NSValue valueWithCGSize:model.cellSize];
     
-//    [contentCell.chatImageView setupImagewithCoverImageName:XJReceivedImage];
-    
     [contentCell.chatImageView setMyImage:[UIImage imageNamed:model.strURLImage] withNSValue:value];
     
-    [contentCell setNeedsDisplay];
     
     
     return contentCell;
@@ -229,12 +230,7 @@
     
     NSValue *value = [NSValue valueWithCGSize:model.cellSize];
     
-//    [contentCell.chatImageView setupImagewithCoverImageName:XJImage];
-
-    
     [contentCell.chatImageView setMyImage:[UIImage imageNamed:model.strURLImage] withNSValue:value];
-    
-    [contentCell setNeedsDisplay];
     
     NSLog(@"JMReveived %@",model.strURLImage);
     

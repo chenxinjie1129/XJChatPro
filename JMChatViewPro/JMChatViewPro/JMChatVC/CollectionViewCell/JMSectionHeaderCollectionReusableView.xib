@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -11,8 +10,8 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upa-rh-NQm">
-                    <rect key="frame" x="139" y="14" width="42" height="20.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Upa-rh-NQm">
+                    <rect key="frame" x="142" y="0.0" width="36" height="17"/>
                     <animations/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -22,7 +21,7 @@
             <animations/>
             <constraints>
                 <constraint firstItem="Upa-rh-NQm" firstAttribute="centerX" secondItem="U6b-Vx-4bR" secondAttribute="centerX" id="9uw-Ih-LxU"/>
-                <constraint firstItem="Upa-rh-NQm" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="14" id="S8v-cY-zoq"/>
+                <constraint firstItem="Upa-rh-NQm" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" id="S8v-cY-zoq"/>
             </constraints>
             <connections>
                 <outlet property="dateLabel" destination="Upa-rh-NQm" id="Toh-3z-LMx"/>

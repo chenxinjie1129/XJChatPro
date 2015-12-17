@@ -151,12 +151,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		843602AC1C16C6F00040986B /* XJExtension */ = {
+		843602AC1C16C6F00040986B /* XJUIImageExtension */ = {
 			isa = PBXGroup;
 			children = (
 				843602AD1C16C6F00040986B /* UIImageView+XJExtension.h */,
 				843602AE1C16C6F00040986B /* UIImageView+XJExtension.m */,
 			);
+			name = XJUIImageExtension;
 			path = XJExtension;
 			sourceTree = "<group>";
 		};
@@ -185,7 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				8436AA7C1C17D003005F880C /* XJCustomLayout */,
-				843602AC1C16C6F00040986B /* XJExtension */,
+				843602AC1C16C6F00040986B /* XJUIImageExtension */,
 				BF62AD841C06F2ED0097F60E /* CollectionViewCell */,
 				BF62AD991C06F2ED0097F60E /* JMCellFactory.h */,
 				BF62AD9A1C06F2ED0097F60E /* JMCellFactory.m */,

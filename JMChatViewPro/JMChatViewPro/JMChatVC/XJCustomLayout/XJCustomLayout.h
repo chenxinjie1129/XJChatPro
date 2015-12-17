@@ -16,9 +16,12 @@
 
 -(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section;
 
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section;
+
+
 @end
 
-@interface XJCustomLayout : UICollectionViewLayout
+@interface XJCustomLayout : UICollectionViewFlowLayout
 
 @property (nonatomic, assign) id<CustomLayoutDelegate> delegate;
 
@@ -47,5 +50,7 @@
  行间距
  */
 @property (nonatomic, assign) NSInteger interSpace;
+
+@property (nonatomic, assign) BOOL isInset;
 
 @end
