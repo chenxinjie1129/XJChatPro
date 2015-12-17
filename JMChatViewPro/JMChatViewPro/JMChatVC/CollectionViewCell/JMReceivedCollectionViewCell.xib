@@ -17,7 +17,7 @@
                         <animations/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7u-kr-dby">
-                        <rect key="frame" x="20" y="10" width="70" height="44"/>
+                        <rect key="frame" x="15" y="10" width="75" height="44"/>
                         <animations/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -33,7 +33,7 @@
                 <constraint firstItem="lbY-yt-pdl" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3r5-Z0-GXm"/>
                 <constraint firstAttribute="trailing" secondItem="lbY-yt-pdl" secondAttribute="trailing" id="4z8-PW-bvM"/>
                 <constraint firstAttribute="bottom" secondItem="F7u-kr-dby" secondAttribute="bottom" constant="8" id="7Me-xb-j4T"/>
-                <constraint firstItem="F7u-kr-dby" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="ZTN-NB-O4t"/>
+                <constraint firstItem="F7u-kr-dby" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="ZTN-NB-O4t"/>
                 <constraint firstItem="lbY-yt-pdl" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="aCW-DJ-yhv"/>
                 <constraint firstAttribute="bottom" secondItem="lbY-yt-pdl" secondAttribute="bottom" id="rxf-gv-tir"/>
                 <constraint firstAttribute="trailing" secondItem="F7u-kr-dby" secondAttribute="trailing" constant="8" id="xBm-Wi-t7e"/>

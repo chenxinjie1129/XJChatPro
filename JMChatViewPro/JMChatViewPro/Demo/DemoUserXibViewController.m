@@ -9,6 +9,8 @@
 #import "DemoUserXibViewController.h"
 #import "XJCustomLayout.h"
 
+#define testDataArray @[@"岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫岩烧店的烟味弥漫",@"隔壁是国术馆一句惹毛我的人有危险 一再重演一根我不抽的烟 一放好多年",@"店里面的妈妈桑",@" 茶道 有三段",@"教拳脚武术的老板",@" 练铁沙掌 耍杨家枪隔壁是国术馆一句惹毛我的人有危险 一再重演一根我不抽的烟 一放好多年隔壁是国术馆一句惹毛我的人有危险 一再重演一根我不抽的烟 一放好多年隔壁是国术馆一句惹毛我的人有危险 一再重演一根我不抽的烟 一放好多年",@"硬底子功夫最擅长",@"他们儿子我习惯 从小就耳濡目染",@"什么刀枪跟棍棒",@"      我       耍我       耍    的 有   模有样",@"什么兵器 最喜欢 ",@"双截棍柔中带刚",@"想要去河南嵩山学少林跟武当",@"干什么（客）",@"干什么（客）",@"呼吸吐纳心自在",@"干什么（客） 干什么（客）",@"气沉丹田手心开",@"干什么（客）",@" 干什么（客）",@"日行千里系沙袋",@"飞檐走壁莫奇怪 去去就来",@"一个马步向前 ",@"一记 左钩拳右钩拳"]
+
 @interface DemoUserXibViewController ()
 
 @end
@@ -53,6 +55,8 @@
     
     JMChatModel *model = [[JMChatModel alloc] init];
     
+    int contentIndex = random()%10;
+    
     int rand = random()%2;
     
     model.chatType = rand;
@@ -65,7 +69,7 @@
     
     model.strDate = @"日期未知";
     
-    model.strContent =@"add normal action";
+    model.strContent = testDataArray[contentIndex];
     
     ((XJCustomLayout *)self.chatCollectionView.collectionViewLayout).isInset = YES;
     

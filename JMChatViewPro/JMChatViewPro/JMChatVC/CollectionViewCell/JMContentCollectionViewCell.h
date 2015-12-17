@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import "JMBasicCollectionViewCell.h"
-
+#import "JMChatModel.h"
 
 @interface JMContentCollectionViewCell : JMBasicCollectionViewCell
 
 
 @property (weak, nonatomic) IBOutlet UILabel *chatLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *chatBgImage;
+
+-(void)setModel:(JMChatModel *)model;
 
 @end
 

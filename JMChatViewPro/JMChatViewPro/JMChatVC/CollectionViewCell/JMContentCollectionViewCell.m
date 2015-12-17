@@ -14,11 +14,22 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    [self.chatBgImage setupImagewithCoverImageName:XJReceivedImage];
    
 }
 
-
+-(void)setModel:(JMChatModel *)model
+{
+    
+    UIImage *image = [UIImage imageNamed:XJReceivedImage];
+    
+    UIEdgeInsets edge=UIEdgeInsetsMake(30, 10, 5,30);
+    
+    image = [image resizableImageWithCapInsets:edge resizingMode:UIImageResizingModeStretch];
+    
+    self.chatBgImage.image = image;
+    
+    self.chatLabel.text = model.strContent;
+}
 
 @end
 

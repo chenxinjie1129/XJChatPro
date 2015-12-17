@@ -14,4 +14,6 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *chatImageView;
 
+-(void)setModel:(JMChatModel *)model;
+
 @end

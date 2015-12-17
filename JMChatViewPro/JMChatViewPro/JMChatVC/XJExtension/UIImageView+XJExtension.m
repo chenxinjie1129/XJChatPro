@@ -88,5 +88,12 @@ static void * MyObjectMyValuePorpertyKey = (void *)@"MyObjectMyValuePorpertyKey"
     
     self.contentLayer.contents = (id)image.CGImage;
 }
+- (void)makeMaskView:(UIView *)view withImage:(UIImage *)image
+{
+    UIImageView *imageViewMask = [[UIImageView alloc] initWithImage:image];
+    imageViewMask.frame = CGRectInset(view.frame, 0.0f, 0.0f);
+    view.layer.mask = imageViewMask.layer;
+    view.layer.masksToBounds = YES;
+}
 
 @end

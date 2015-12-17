@@ -50,7 +50,9 @@
  行间距
  */
 @property (nonatomic, assign) NSInteger interSpace;
-
+/**
+ *  默认为 NO  当 collectionview  要插入一行数据时应 先 将其设置为 YES
+*/
 @property (nonatomic, assign) BOOL isInset;
 
 @end

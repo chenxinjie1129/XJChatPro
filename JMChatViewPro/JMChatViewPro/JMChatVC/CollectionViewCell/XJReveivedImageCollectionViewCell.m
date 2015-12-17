@@ -14,14 +14,23 @@
 - (void)awakeFromNib {
     // Initialization code
     
-    [self.chatImageView setupImagewithCoverImageName:XJImage];
 }
-//-(void)prepareForReuse
-//{
-//    [super prepareForReuse];
-//    
-//    [self.chatImageView setMyImage:nil withNSValue:nil];
-//}
+-(void)setModel:(JMChatModel *)model
+{
+    
+    UIImage *image = [UIImage imageNamed:XJImage];
+    
+    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(30, 30, 5,10) resizingMode:UIImageResizingModeStretch];
+    
+//    [self.chatImageView setImageWithURLStr:model.strURLImage andPlaceHolder:@"empty_BGM"];
+    //
+    self.chatImageView.image = [UIImage imageNamed:model.strURLImage];
+    
+    [self.chatImageView makeMaskView:self.chatImageView withImage:image];
+    
+    
+    
+}
 
 
 @end

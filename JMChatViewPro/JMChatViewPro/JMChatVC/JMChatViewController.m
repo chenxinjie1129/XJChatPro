@@ -122,7 +122,7 @@
             
         } completion:^(BOOL finished) {
             
-            [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
+            [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:NO];
             
             [self.sendTextField resignFirstResponder];
             
@@ -169,7 +169,7 @@
     [self.chatCollectionView insertSections:[NSIndexSet indexSetWithIndex:self.dataArray.count -1]];
     
     
-    [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
+    [self.chatCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:1 inSection:self.dataArray.count-1] atScrollPosition:UICollectionViewScrollPositionBottom animated:YES];
 
 }
 
@@ -197,7 +197,7 @@
 
 -(void)testData{
 
-    for (int i = 0; i<2; i++) {
+    for (int i = 0; i<20; i++) {
         
         JMChatModel *model = [[JMChatModel alloc] init];
 

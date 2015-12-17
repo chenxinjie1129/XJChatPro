@@ -21,5 +21,7 @@
 
 -(void)setupImagewithCoverImageName:(NSString *)strCoverImage;
 
+- (void)makeMaskView:(UIView *)view withImage:(UIImage *)image;
+
 
 @end

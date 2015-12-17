@@ -45,7 +45,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="46" id="ev0-ex-29g"/>
                             </constraints>
-                            <state key="normal" title="发送"/>
+                            <state key="normal" title="send"/>
                             <variation key="default">
                                 <mask key="constraints">
                                     <exclude reference="ev0-ex-29g"/>
@@ -118,13 +118,13 @@
                     <exclude reference="f2R-s8-bVS"/>
                 </mask>
                 <mask key="constraints">
-                    <exclude reference="8kT-dj-nJJ"/>
-                    <exclude reference="deA-r8-f1R"/>
-                    <exclude reference="lEY-iH-jFw"/>
                     <exclude reference="Mty-3G-Zf0"/>
                     <exclude reference="NgH-Kw-Tsa"/>
                     <exclude reference="WPU-jU-8hn"/>
                     <exclude reference="Zxp-XZ-EVw"/>
+                    <exclude reference="8kT-dj-nJJ"/>
+                    <exclude reference="deA-r8-f1R"/>
+                    <exclude reference="lEY-iH-jFw"/>
                 </mask>
             </variation>
             <variation key="heightClass=regular-widthClass=compact">
@@ -133,13 +133,13 @@
                     <include reference="f2R-s8-bVS"/>
                 </mask>
                 <mask key="constraints">
-                    <include reference="8kT-dj-nJJ"/>
-                    <include reference="deA-r8-f1R"/>
-                    <include reference="lEY-iH-jFw"/>
                     <include reference="Mty-3G-Zf0"/>
                     <include reference="NgH-Kw-Tsa"/>
                     <include reference="WPU-jU-8hn"/>
                     <include reference="Zxp-XZ-EVw"/>
+                    <include reference="8kT-dj-nJJ"/>
+                    <include reference="deA-r8-f1R"/>
+                    <include reference="lEY-iH-jFw"/>
                 </mask>
             </variation>
         </view>

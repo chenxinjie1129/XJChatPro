@@ -137,17 +137,11 @@
 
     JMContentCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMConetnt forIndexPath:indexPath];
     
+    [contentCell layoutIfNeeded];//强制更新
+    
     contentCell.chateType = model.chatType;
     
-    NSLog(@"%f",contentCell.frame.origin.y);
-    
-    NSValue *value = [NSValue valueWithCGSize:model.cellSize];
-    
-    [contentCell.chatBgImage setMyImage:[UIImage imageNamed:@"chatBgImage"] withNSValue:value];
-    
-    contentCell.chatLabel.text = model.strContent;
-
-    
+    [contentCell setModel:model];
     
     return contentCell;
 
@@ -159,16 +153,11 @@
 
     JMReceivedCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMReceivedContent forIndexPath:indexPath];
     
-    NSLog(@"%f",contentCell.frame.origin.y);
+    [contentCell layoutIfNeeded];//强制更新
     
     contentCell.chateType = model.chatType;
     
-    NSValue *value = [NSValue valueWithCGSize:model.cellSize];
-    
-    [contentCell.chatBgImage setMyImage:[UIImage imageNamed:@"chatBgImage"] withNSValue:value];
-    
-    
-    contentCell.chatLabel.text = model.strContent;
+    [contentCell setModel:model];
         
     return contentCell;
 
@@ -176,29 +165,14 @@
 
 
 -(UICollectionViewCell *)setupImageForCell:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath WithModel:(JMChatModel *)model{
-    
-    /*
-    JMImageCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMImage forIndexPath:indexPath];
-    
-    
-    contentCell.chateType = model.chatType;
-    
-    [contentCell.chatImageView setImage:[UIImage imageNamed:model.strURLImage]];
-    
  
-    
-    return contentCell;
-     
-    */
     XJImageCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMImage forIndexPath:indexPath];
     
+    [contentCell layoutIfNeeded];
     
     contentCell.chateType = model.chatType;
     
-    NSValue *value = [NSValue valueWithCGSize:model.cellSize];
-    
-    [contentCell.chatImageView setMyImage:[UIImage imageNamed:model.strURLImage] withNSValue:value];
-    
+    [contentCell setModel:model];
     
     
     return contentCell;
@@ -210,29 +184,16 @@
 
 
 -(UICollectionViewCell *)setupImageReceivedForCell:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath WithModel:(JMChatModel *)model{
-    
-    /*
-    JMReveivedImageCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMReceivedImage forIndexPath:indexPath];
-        
-    contentCell.chateType = model.chatType;
-    
-    [contentCell.chatImageView setImage:[UIImage imageNamed:model.strURLImage]];
-    
-    NSLog(@"JMReveived %@",model.strURLImage);
-    
-    
-    return contentCell;
-     */
+
     
     XJReveivedImageCollectionViewCell* contentCell = [collectionView dequeueReusableCellWithReuseIdentifier:JMReceivedImage forIndexPath:indexPath];
     
+    [contentCell layoutIfNeeded];
+    
     contentCell.chateType = model.chatType;
+
     
-    NSValue *value = [NSValue valueWithCGSize:model.cellSize];
-    
-    [contentCell.chatImageView setMyImage:[UIImage imageNamed:model.strURLImage] withNSValue:value];
-    
-    NSLog(@"JMReveived %@",model.strURLImage);
+    [contentCell setModel:model];
     
     
     return contentCell;

@@ -37,9 +37,8 @@
     if (self = [super init])
     {
         self.headerReferenceSize = CGSizeMake(screen_size_width, 40);
-        _sectionInsets = UIEdgeInsetsMake(40, 0, 0, 0);
+        _sectionInsets = UIEdgeInsetsMake(40, 0, 0, 20);
         _columnCount = 3;
-        _columnSpace = 10;
         _interSpace = 5;
     }
     
@@ -110,8 +109,6 @@
 - (void)prepareLayout
 {
     [super prepareLayout];
-    
-    NSInteger m = 0;
     
     
     _delegate = (id<CustomLayoutDelegate>)self.collectionView.delegate;
@@ -202,10 +199,7 @@
                     
                     
                 }
-                NSLog(@"%zi",m++);
-                if (m == ([self.collectionView numberOfSections]*3)) {
-                    NSLog(@"******%f",maxHeightOfRow);
-                }
+            
                 
             }
             if (sectionAttributes != nil) {
@@ -217,7 +211,6 @@
 
 else{
 
-        NSLog(@"-%f %zi ",maxHeightOfRow,[self.collectionView numberOfSections]);
         NSInteger sectionNum = [self.collectionView numberOfSections];
         NSInteger totalItemW = 0;
         
@@ -281,12 +274,8 @@ else{
                 
                 maxHeightOfRow = [_columnHeightArray[[self longestColomnHeight]] floatValue];
                 
-                
             }
-            NSLog(@"%zi",m++);
-            if (m == 3) {
-                NSLog(@"+%f",maxHeightOfRow);
-            }
+          
             
         }
         if (sectionAttributes != nil) {

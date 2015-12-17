@@ -13,6 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *chatImageView;
 
-@property (copy, nonatomic) NSValue *myValue;
+
+-(void)setModel:(JMChatModel *)model;
 
 @end
